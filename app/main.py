@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
-from app.api import vehicules, chauffeurs, affectations, entretiens, reparations, alertes, dashboard
+from app.api import vehicules, chauffeurs, affectations, entretiens, reparations, alertes, dashboard, cours, questions
 
 # Créer les tables
 Base.metadata.create_all(bind=engine)
@@ -29,6 +29,8 @@ app.include_router(entretiens.router)
 app.include_router(reparations.router)
 app.include_router(alertes.router)
 app.include_router(dashboard.router)
+app.include_router(cours.router)
+app.include_router(questions.router)
 
 
 @app.get("/")
